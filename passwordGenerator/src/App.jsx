@@ -41,7 +41,6 @@ function App() {
     passwordGenerator()
   }, [length, numberAllowed, charactersAllowed, passwordGenerator])
 
-
   // Now the copy of password is remaining
   // clipboard pe copy isn't the difficult task, the difficult task is what to copy
   //there is another hook for this -> useRef(). As the input and button field are not related thats why we are using the useRef hook
@@ -55,13 +54,13 @@ function App() {
 
   return (
     <div className='flex flex-col min-w-screen h-screen items-center justify-center text-white '>
-      <div className='p-12 pt-8 bg-gradient-to-tl from-violet-600 to-fuchsia-600 rounded-3xl'>
-        <h1 className='text-center text-4xl pb-6 text-transparent bg-clip-text bg-gradient-to-br from-sky-400 to-indigo-400 font-bold'>Password Generator</h1>
+      <div className='p-12 pt-8 bg-gradient-to-tl from-violet-500 to-fuchsia-600 rounded-3xl'>
+        <h1 className='text-center text-4xl pb-6 text-transparent bg-clip-text bg-gradient-to-br from-sky-500 to-indigo-500 font-bold'>Password Generator</h1>
         <div className='flex'>
-        <input type="text" value={password} className='bg-white text-black w-full px-2 py-2 text-xl rounded-l-xl focus:outline-none' placeholder='Password' readOnly ref={passwordRef}/>
-        <button className='px-2 py-2 bg-amber-500 rounded-r-xl ' onClick={copyPasswordToClipboard} >Copy</button>
+        <input type="text" value={password} className='bg-black text-white w-full px-2 py-2 text-xl rounded-l-xl focus:outline-none' placeholder='Password' readOnly ref={passwordRef}/>
+        <button className='px-2 py-2 bg-amber-500 rounded-r-xl text-black font-semibold' onClick={copyPasswordToClipboard} >Copy</button>
       </div>
-      <div className='bg-green-600sad pt-3 flex'>
+      <div className='bg-green-600sad pt-3 flex text-black font-semibold'>
         <input type="range" name="Length" id="length" min={6} max={100} value={length} onChange={(e) => {
           setLength(e.target.value)
         }}
@@ -78,10 +77,8 @@ function App() {
         }}
         className='accent-amber-500'/>
         <label htmlFor="charactersAllowed" className='pl-1 pr-2'>Characters</label>
-
       </div>
       </div>
-      
     </div>
 
   )
