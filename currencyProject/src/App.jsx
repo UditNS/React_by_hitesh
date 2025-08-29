@@ -41,7 +41,7 @@ function App() {
               label="From"
               amount={amount}
               currencyOptions={options}
-              onCurrencyChange={(currency) => setFrom(amount)}
+              onCurrencyChange={(currency) => setFrom(currency)}
               selectCurrency={from}
               onAmountChange={(amount) =>  setAmount(amount)}
               />
@@ -68,7 +68,7 @@ function App() {
               type="submit"
               className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg"
             >
-              Convert {from} to {to}
+              Convert {from.toUpperCase()} to {to.toUpperCase()}
             </button>
           </form>
         </div>
@@ -84,4 +84,4 @@ export default App;
 // Assignment 
 // 1. Make changes to ui
 // 2. No value in currency type fix it and make one value default as usd and other as inr
-//whenver i select any currency from currency type it just bug out
+//whenver i select any currency from currency type it just bug out 
