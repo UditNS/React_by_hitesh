@@ -24,7 +24,7 @@ function InputBox({
     <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
       <div className="w-1/2">
         <label
-          htmlFor={amountInputID}
+          htmlFor={amountInputID} //here the useId hook is implemented
           className="text-black/40 mb-2 inline-block"
         >
           {label}
@@ -35,7 +35,7 @@ function InputBox({
           type="number"
           placeholder="Amount"
           disabled={amountDisable}
-          value={amount}
+          value={label == 'From' ? amount : Number(amount).toFixed(2)}
           onChange={(e) =>
             onAmountChange && onAmountChange(Number(e.target.value))
           }

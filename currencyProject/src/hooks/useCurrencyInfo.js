@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 // What does this hook does?
-// This hook return some data. What data -> api csll data
+// This hook return some data. What data -> api call data
 function useCurrencyInfo(currency){
     const [data, setData] = useState({})
     // here data is variable while the setData is a function which changes the data throughout UI.
@@ -26,7 +26,6 @@ function useCurrencyInfo(currency){
         //Dot notation (res.currency) → property name must be a fixed literal key called "currency".
         // Bracket notation (res[currency]) → property name can be dynamic, i.e., the value stored in the variable currency.
     }, [currency])
-    console.log(data)
     return data;
 }
 

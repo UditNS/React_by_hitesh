@@ -9,13 +9,13 @@ function App() {
   const [convertedAmount, setConvertedAmount] = useState(0);
 
   const currencyInfo = useCurrencyInfo(from);
-  const options = Object.keys(currencyInfo); //Whats the use of this
+  const options = Object.keys(currencyInfo); //Whats the use of this -> fetches key (i.e. -> currency options)
 
   const swap = () => {
     setFrom(to);
     setTo(from);
     setConvertedAmount(amount);
-    setAmount(convertedAmount);
+    setAmount(convertedAmount.toFixed(2));
   };
   const convert = () => {
     setConvertedAmount(amount * currencyInfo[to]);
@@ -25,18 +25,18 @@ function App() {
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
       style={{
-        backgroundImage: `url(https://images.unsplash.com/photo-1710764275022-ede939a1f5e2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzR8fHNjaSUyMGZpfGVufDB8fDB8fHww)`,
+        backgroundImage: `url(https://plus.unsplash.com/premium_photo-1681487769650-a0c3fbaed85a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZmluYW5jZXxlbnwwfHwwfHx8MA%3D%3D)`,
       }}
     >
       <div className="w-full">
-        <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
+        <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-black/40">
           <form
             onSubmit={(e) => {
               e.preventDefault();
               convert()
             }}
           >
-            <div className="w-full mb-1">
+            <div className="w-full mb-1"> ``
               <InputBox 
               label="From"
               amount={amount}
@@ -46,7 +46,7 @@ function App() {
               onAmountChange={(amount) =>  setAmount(amount)}
               />
             </div>
-            <div className="relative w-full h-0.5">
+            <div className="relative w-full h-1">
               <button
                 type="button"
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5"
