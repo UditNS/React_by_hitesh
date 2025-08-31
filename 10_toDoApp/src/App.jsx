@@ -26,10 +26,10 @@ function App() {
   // It might happen when i open my todo app there are some previous todo exist which i need to fetch from local storage
 
   useEffect(() => {
-    JSON.parse(localStorage.getItem('todos'))
+    const storedTodo = JSON.parse(localStorage.getItem('todos'))
 
-    if(todos && todos.length > 0){
-      setTodo(todos)
+    if(storedTodo && storedTodo.length > 0){
+      setTodo(storedTodo)
     }
   }, [])
 // This useEffect is used to put some new todos into the local storage. We can't use previous useEffect because it will cal getItems everytime we add a new todo which cause repeatitive todos in the app
@@ -50,7 +50,7 @@ function App() {
                 {/*Loop and Add TodoItem here */}
                 {todos.map((todo) => (
                   <div key={todo.id} className='w-full'>
-                    <ToDoItem todo/>
+                    <ToDoItem todo = {todo}/>
                   </div>
                 ))}
             </div>

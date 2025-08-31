@@ -9,7 +9,7 @@ function ToDoForm() {
         e.preventDefault()
         if(!todo) return
 
-        addTodo({todo, completed: false})
+        addTodo({todoMessage : todo, completed: false})
         setTodo('')
     }
 
