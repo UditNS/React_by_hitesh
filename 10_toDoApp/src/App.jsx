@@ -16,7 +16,7 @@ function App() {
   } 
   
   const deleteTodo = (id) => {
-    setTodo((prev) => prev.filter((todo) => todo.id !== id)) // jo jo match nahi karga vo aata jaye ga
+    setTodo((prev) => prev.filter((todo) => todo.id !== id)) // jo jo match nahi karga vo aata jaye ga //works on true value
   }
 
   const toggleComplete = (id) => {
