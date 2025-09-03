@@ -26,11 +26,19 @@ export class AuthService{
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if(userAccount) {
                 // call another method which directly logs-in the user
+                return this.login({email, password});
             } 
             else{
                 return userAccount;
             }
         
+        } catch (error) {
+            throw error
+        }
+    }
+    async login({email, password}){
+        try {
+            return await this.account.createEmailPasswordSession(email, password);
         } catch (error) {
             throw error
         }
