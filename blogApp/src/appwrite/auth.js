@@ -43,6 +43,14 @@ export class AuthService{
             throw error
         }
     }
+    async getUserAccount(){
+        try {
+            return await this.account.get()
+        } catch (error) {
+            console.log("error in appwrite getUserAccout " + error)
+        }
+        return null;
+    }
 }
 
 
