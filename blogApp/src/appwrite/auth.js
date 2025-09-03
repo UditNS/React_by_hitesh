@@ -16,8 +16,25 @@ export class AuthService{
         .setProject(conf.appwriteProjectId);  
         this.account = new Account(this.client);
     }
+    // agar kisi din mere ko appwrite change karke firebase use karna hai toh constructor change kar duga bas toh kaam hojaye ha kyuki user se toh mai same input luga sire ye method change karna hoga.
 
-    
+    // creating another method in which i will call all the services of appwrite
+    // why async because given in documentation it is a promise
+    async createAccount({email, password, name}){
+        // account creation method can fail so there is need to handle error -> try/ catch
+        try {
+            const userAccount = await this.account.create(ID.unique(), email, password, name);
+            if(userAccount) {
+                // call another method which directly logs-in the user
+            } 
+            else{
+                return userAccount;
+            }
+        
+        } catch (error) {
+            throw error
+        }
+    }
 }
 
 
