@@ -74,6 +74,19 @@ export class Service{
             console.log("error in getPost" + error)
         }
     }
+    async getPosts(queries = [Query.equal('status', 'active')]){
+        try {
+            return await this.databases.listDocuments(
+            conf.appwriteDatabaseId,
+            conf.appwriteCollectionId,
+            queries
+            // we can also implement pagination here (limit, offset, cursor, etc.
+        )
+        } catch (error) {
+            console.log("error in getPosts" + error)
+            return false;
+        }
+    }
     
 }
 
