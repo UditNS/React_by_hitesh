@@ -50,6 +50,17 @@ export class Service{
             console.log("error in updatePost" + error)
         }
     }   
+    async deletePost(slug){
+        try {
+            return await this.databases.deleteDocument(
+            conf.appwriteDatabaseId,
+            conf.appwriteCollectionId,
+            slug,  // unique id
+        )
+        } catch (error) {
+            console.log("error in deletePost" + error)
+        }
+    }
 }
 
 const service = new Service();
