@@ -57,8 +57,10 @@ export class Service{
             conf.appwriteCollectionId,
             slug,  // unique id
         )
+        return true;
         } catch (error) {
             console.log("error in deletePost" + error)
+            return false;
         }
     }
 }
