@@ -14,7 +14,8 @@ export class Service{
     }
     
     async createPost({title, slug, content, featuredImage, status, userId}){
-        return await this.databases.createDocument(
+        try {
+            return await this.databases.createDocument(
             conf.appwriteDatabaseId,
             conf.appwriteCollectionId,
             slug,  // unique id
@@ -26,10 +27,31 @@ export class Service{
                 userId
             }
         )
+        } catch (error) {
+            console.log("error in createPost" + error)
+        }
+        
 
     }
+    async updatePost(slug, {title, content, featuredImage, status}){
+        try {
+            return await this.databases.updateDocument(
+            conf.appwriteDatabaseId,
+            conf.appwriteCollectionId,
+            slug,  // unique id
+            {
+                title,
+                content,
+                featuredImage,
+                status
+            }
+        )
+        } catch (error) {
+            console.log("error in updatePost" + error)
+        }
+    }   
 }
 
-const service = new Service
+const service = new Service();
 
 export default service;
