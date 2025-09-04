@@ -111,6 +111,17 @@ export class Service{
             return false;
         }
     }
+    getFilePreview(fileId){
+        try {
+            return this.bucket.getFilePreview(
+                conf.appwriteBucketId,
+                fileId
+            )
+        } catch (error) {
+            console.log("error in getFilePreview" + error)
+            return false;
+        }
+    }
 } 
 
 const service = new Service();
