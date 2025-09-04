@@ -63,6 +63,18 @@ export class Service{
             return false;
         }
     }
+    async getPost(slug){
+        try {
+            return await this.databases.getDocument(
+            conf.appwriteDatabaseId,
+            conf.appwriteCollectionId,
+            slug,  // unique id
+        )
+        } catch (error) {
+            console.log("error in getPost" + error)
+        }
+    }
+    
 }
 
 const service = new Service();
