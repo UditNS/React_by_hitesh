@@ -99,7 +99,19 @@ export class Service{
             console.log("error in uploadFile" + error)
             return false;
         }
-}
+    }
+    async deleteFile(fileId){
+        try {
+            return await this.bucket.deleteFile(
+                conf.appwriteBucketId,
+                fileId
+            )
+        } catch (error) {
+            console.log("error in deleteFile" + error)
+            return false;
+        }
+    }
+} 
 
 const service = new Service();
 
