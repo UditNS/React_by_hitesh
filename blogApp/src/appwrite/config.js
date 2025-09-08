@@ -2,6 +2,7 @@ import conf from "../conf/conf";
 import { Client, Account, ID, Databases, Storage, Query } from "appwrite";
 
 export class Service{
+    // declaration of variables
     client = new Client;
     databases;
     bucket;
@@ -19,7 +20,7 @@ export class Service{
             conf.appwriteDatabaseId,
             conf.appwriteCollectionId,
             slug,  // unique id
-            {
+            {//these values I need to store in database
                 title,
                 content,
                 featuredImage,
@@ -76,6 +77,7 @@ export class Service{
     }
     async getPosts(queries = [Query.equal('status', 'active')]){
         try {
+            //queries can only be applied when there are indexes in appwrite database
             return await this.databases.listDocuments(
             conf.appwriteDatabaseId,
             conf.appwriteCollectionId,
@@ -94,12 +96,14 @@ export class Service{
                 conf.appwriteBucketId,
                 ID.unique(),
                 file
+                // here file refers to image
             )
         } catch (error) {
             console.log("error in uploadFile" + error)
             return false;
         }
     }
+    // file jaise hi upload karte hai vo return karta hai fileId jisko hum database me store karte hai as featuredImage
     async deleteFile(fileId){
         try {
             return await this.bucket.deleteFile(

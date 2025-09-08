@@ -11,6 +11,7 @@ export class AuthService{
     account;
     // this is code same as appwrite code we just modify it for better practices
     constructor(){
+        // why use constructor -> because it runs when the object is created  
         this.client
         .setEndpoint(conf.appwriteUrl) 
         .setProject(conf.appwriteProjectId);  
@@ -45,6 +46,7 @@ export class AuthService{
     }
     async getUserAccount(){
         try {
+            // Retrieves current logged-in user's account information
             return await this.account.get()
         } catch (error) {
             console.log("error in appwrite getUserAccout " + error)
